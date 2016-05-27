@@ -17,10 +17,6 @@ public:
     Solution(vector<int> p);
 
     int evaluate();
-
-    int distance(Solution &s);
-
-    static Solution random();
 };
 
 

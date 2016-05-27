@@ -9,12 +9,12 @@
 class Data : public Singleton<Data> {
 
 public:
+    Parameters parameters;
+
     int n;
 
     std::vector<std::vector<int>> A;
     std::vector<std::vector<int>> B;
-
-    Parameters parameters;
 
     Data();
 

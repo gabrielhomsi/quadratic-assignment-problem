@@ -3,6 +3,11 @@
 
 using namespace std;
 
+LocalSearch::LocalSearch() {
+    this->parameters = Parameters::getInstance();
+    this->data = Data::getInstance();
+}
+
 Solution LocalSearch::run(Solution s0) {
     Solution s = s0;
 
@@ -53,9 +58,3 @@ Solution LocalSearch::twoOpt(Solution s, int i, int j) {
 
     return s;
 }
-
-LocalSearch::LocalSearch() {
-    this->parameters = Parameters::getInstance();
-    this->data = Data::getInstance();
-}
-
