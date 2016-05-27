@@ -19,5 +19,9 @@ int main(int argc, char **argv) {
 
     Solution s = ls.run(trivial);
 
+    if (s.cost != s.evaluate()) {
+        cout << "Error! s.cost != s.evaluate()" << endl;
+    }
+
     return 0;
 }
