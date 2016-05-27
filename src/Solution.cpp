@@ -13,6 +13,12 @@ Solution Solution::trivial() {
     return Solution(p);
 }
 
+Solution::Solution(vector<int> p) {
+    this->data = Data::getInstance();
+    this->p = p;
+    this->cost = this->evaluate();
+}
+
 int Solution::evaluate() {
     int cost = 0;
 
@@ -25,8 +31,18 @@ int Solution::evaluate() {
     return cost;
 }
 
-Solution::Solution(vector<int> p) {
-    this->data = Data::getInstance();
-    this->p = p;
-    this->cost = this->evaluate();
+int Solution::distance(Solution &s) {
+    int result = 0;
+
+    for (int i = 0; i < data.n; i++) {
+        if (this->p[i] != s.p[i]) {
+            result ++;
+        }
+    }
+
+    return result;
 }
+
+
+
+

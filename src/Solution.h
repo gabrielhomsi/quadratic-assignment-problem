@@ -9,7 +9,9 @@ using namespace std;
 class Solution {
 public:
     Data data;
+
     vector<int> p;
+
     int cost;
 
     static Solution trivial();
@@ -17,6 +19,8 @@ public:
     Solution(vector<int> p);
 
     int evaluate();
+
+    int distance(Solution &s);
 };
 
 
