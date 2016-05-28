@@ -16,11 +16,15 @@ public:
 
     static Solution trivial();
 
+    static Solution random();
+
     Solution(vector<int> p);
 
     int evaluate();
 
     int distance(Solution &s);
+
+    void display();
 };
 
 

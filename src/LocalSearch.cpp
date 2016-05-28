@@ -21,10 +21,6 @@ Solution LocalSearch::run(Solution s0) {
                 if (s_prime.cost < s.cost) {
                     s = s_prime;
                     neighbor_found = true;
-
-                    if (!parameters.silent) {
-                        cout << "[LS] " << s.cost << endl;
-                    }
                 }
             }
         }

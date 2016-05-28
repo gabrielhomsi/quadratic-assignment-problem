@@ -8,7 +8,12 @@ void Parameters::load(int argc, char **argv) {
 
     description.add_options()
             ("help", "Display this help text and exit")
+
             ("instance", po::value<string>(), "Path to instance file")
+
+            ("population-size", po::value<int>(), "Population Size")
+            ("crossovers", po::value<int>(), "Number of Crossovers")
+
             ("silent", "Silent mode");
 
     po::store(po::command_line_parser(argc, argv).options(description).run(), vm);

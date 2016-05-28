@@ -19,9 +19,7 @@ public:
     Data();
 
     void read();
-
     void readDistance(std::ifstream &instance_file);
-
     void readWeight(std::ifstream &instance_file);
 };
 

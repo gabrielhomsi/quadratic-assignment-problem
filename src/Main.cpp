@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Data.h"
-#include "Solution.h"
-#include "LocalSearch.h"
+#include "MemeticAlgorithm.h"
 
 using namespace std;
 
@@ -11,17 +10,10 @@ int main(int argc, char **argv) {
 
     Data::getInstance().read();
 
-    LocalSearch ls;
+    MemeticAlgorithm ma(parameters.vm["population-size"].as<int>(), parameters.vm["crossovers"].as<int>());
+    Solution best = ma.run();
 
-    Solution trivial = Solution::trivial();
-
-    cout << "[**] " << trivial.cost << endl;
-
-    Solution s = ls.run(trivial);
-
-    if (s.cost != s.evaluate()) {
-        cout << "Error! s.cost != s.evaluate()" << endl;
-    }
+    cout << best.cost << endl;
 
     return 0;
 }

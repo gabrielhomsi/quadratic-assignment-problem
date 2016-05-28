@@ -1,4 +1,6 @@
 #include <algorithm>
+#include <iostream>
+#include <iomanip>
 #include "Solution.h"
 
 Solution Solution::trivial() {
@@ -11,6 +13,16 @@ Solution Solution::trivial() {
     }
 
     return Solution(p);
+}
+
+Solution Solution::random() {
+    Solution s = Solution::trivial();
+
+    random_shuffle(s.p.begin(), s.p.end());
+
+    s.cost = s.evaluate();
+
+    return s;
 }
 
 Solution::Solution(vector<int> p) {
@@ -34,15 +46,20 @@ int Solution::evaluate() {
 int Solution::distance(Solution &s) {
     int result = 0;
 
-    for (int i = 0; i < data.n; i++) {
-        if (this->p[i] != s.p[i]) {
-            result ++;
+    for (int i = 0; i < (int) s.p.size(); i++) {
+        if (p[i] != s.p[i]) {
+            result++;
         }
     }
 
     return result;
 }
 
+void Solution::display() {
+    for (int i = 0; i < (int) p.size(); i++) {
+        cout << setfill(' ') << setw(3) << p[i] << " ";
+    }
 
-
+    cout << endl;
+}
 

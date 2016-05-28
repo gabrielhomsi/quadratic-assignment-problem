@@ -12,6 +12,7 @@ set(
         src/Random.cpp src/Random.h
         src/Solution.cpp src/Solution.h
         src/LocalSearch.cpp src/LocalSearch.h
+        src/MemeticAlgorithm.cpp src/MemeticAlgorithm.h
 )
 
 set(EXECUTABLE_OUTPUT_PATH "release")
