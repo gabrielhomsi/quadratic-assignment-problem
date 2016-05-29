@@ -13,7 +13,9 @@ void Parameters::load(int argc, char **argv) {
 
             ("population-size", po::value<int>(), "Population Size")
             ("crossovers", po::value<int>(), "Number of Crossovers")
+            ("mutations", po::value<int>(), "Number of Mutations")
 
+            ("assertions", "Turn assertions on")
             ("silent", "Silent mode");
 
     po::store(po::command_line_parser(argc, argv).options(description).run(), vm);
@@ -24,6 +26,8 @@ void Parameters::load(int argc, char **argv) {
 
         exit(1);
     }
+
+    assertions = vm.count("assertions") == 1;
 
     silent = vm.count("silent") == 1;
 }

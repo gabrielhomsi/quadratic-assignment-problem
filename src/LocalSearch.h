@@ -12,7 +12,7 @@ public:
 
     Data data;
 
-    Solution run(Solution s0);
+    void run(Solution &s);
 
     Solution twoOpt(Solution s, int i, int j);
 };

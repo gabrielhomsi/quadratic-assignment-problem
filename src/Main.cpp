@@ -10,7 +10,9 @@ int main(int argc, char **argv) {
 
     Data::getInstance().read();
 
-    MemeticAlgorithm ma(parameters.vm["population-size"].as<int>(), parameters.vm["crossovers"].as<int>());
+    MemeticAlgorithm ma(parameters.vm["population-size"].as<int>(),
+                        parameters.vm["crossovers"].as<int>(),
+                        parameters.vm["mutations"].as<int>());
     Solution best = ma.run();
 
     cout << best.cost << endl;

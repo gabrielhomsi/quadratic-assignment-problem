@@ -10,6 +10,8 @@ namespace po = boost::program_options;
 
 class Parameters : public Singleton<Parameters> {
 public:
+    bool assertions;
+
     bool silent;
 
     po::variables_map vm;

@@ -8,9 +8,7 @@ LocalSearch::LocalSearch() {
     this->data = Data::getInstance();
 }
 
-Solution LocalSearch::run(Solution s0) {
-    Solution s = s0;
-
+void LocalSearch::run(Solution &s) {
     while (true) {
         bool neighbor_found = false;
 
@@ -29,8 +27,6 @@ Solution LocalSearch::run(Solution s0) {
             break;
         }
     }
-
-    return s;
 }
 
 Solution LocalSearch::twoOpt(Solution s, int i, int j) {
