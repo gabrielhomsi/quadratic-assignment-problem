@@ -13,6 +13,7 @@ set(
         src/Solution.cpp src/Solution.h
         src/LocalSearch.cpp src/LocalSearch.h
         src/MemeticAlgorithm.cpp src/MemeticAlgorithm.h
+        src/TwoOpt.cpp src/TwoOpt.h
 )
 
 set(EXECUTABLE_OUTPUT_PATH "release")

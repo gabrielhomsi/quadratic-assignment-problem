@@ -3,6 +3,7 @@
 
 
 #include "Solution.h"
+#include "TwoOpt.h"
 
 class LocalSearch {
 public:
@@ -12,9 +13,9 @@ public:
 
     Data data;
 
-    void run(Solution &s);
+    TwoOpt twoOpt;
 
-    Solution twoOpt(Solution s, int i, int j);
+    void run(Solution &s);
 };
 
 

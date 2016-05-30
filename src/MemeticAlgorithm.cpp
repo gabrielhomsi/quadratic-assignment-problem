@@ -176,7 +176,7 @@ Solution &MemeticAlgorithm::selectRandomIndividual() {
 }
 
 void MemeticAlgorithm::mutate(Solution &s) {
-    LocalSearch ls;
+    TwoOpt twoOpt;
 
     for (int i = 0; i < (int) s.p.size() / 8; i++) {
         int j, k;
@@ -186,7 +186,7 @@ void MemeticAlgorithm::mutate(Solution &s) {
             k = util::random_int(0, (int) s.p.size() - 1);
         } while (j == k);
 
-        s = ls.twoOpt(s, j, k);
+        s = twoOpt.move(s, j, k);
     }
 }
 
