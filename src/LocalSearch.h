@@ -9,13 +9,14 @@ class LocalSearch {
 public:
     LocalSearch();
 
-    Parameters parameters;
-
-    Data data;
-
     TwoOpt twoOpt;
 
     void run(Solution &s);
+
+private:
+    Parameters parameters;
+
+    Data data;
 };
 
 

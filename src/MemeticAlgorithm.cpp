@@ -31,7 +31,7 @@ Solution MemeticAlgorithm::run() {
 
         for (int i = 0; i < crossovers; i++) {
             pair<Solution*, Solution*> parents = selectTwoParentsRandomly();
-            Solution child = cx(*parents.first, *parents.second);
+            Solution child = crossover(*parents.first, *parents.second);
             ls.run(child);
             population.push_back(child);
 
@@ -113,7 +113,7 @@ pair<Solution*, Solution*> MemeticAlgorithm::selectTwoParentsRandomly() {
     return make_pair(&population[i], &population[j]);
 }
 
-Solution MemeticAlgorithm::cx(Solution &a, Solution &b) {
+Solution MemeticAlgorithm::crossover(Solution &a, Solution &b) {
     vector<int> p;
     p.resize(a.p.size());
 

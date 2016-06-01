@@ -9,8 +9,6 @@
 class Data : public Singleton<Data> {
 
 public:
-    Parameters parameters;
-
     int n;
 
     std::vector<std::vector<int>> A;
@@ -19,6 +17,10 @@ public:
     Data();
 
     void read();
+
+private:
+    Parameters parameters;
+
     void readDistance(std::ifstream &instance_file);
     void readWeight(std::ifstream &instance_file);
 };

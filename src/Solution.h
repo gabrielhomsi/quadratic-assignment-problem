@@ -8,8 +8,6 @@ using namespace std;
 
 class Solution {
 public:
-    Data data;
-
     vector<int> p;
 
     int cost;
@@ -25,6 +23,9 @@ public:
     int distance(Solution &s);
 
     void display();
+
+private:
+    Data data;
 };
 
 

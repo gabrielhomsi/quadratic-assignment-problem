@@ -6,6 +6,11 @@
 
 class MemeticAlgorithm {
 public:
+    MemeticAlgorithm(int population_size, int crossovers, int mutations);
+
+    Solution run();
+
+private:
     Parameters parameters;
 
     int population_size;
@@ -17,13 +22,9 @@ public:
 
     vector<Solution> population;
 
-    MemeticAlgorithm(int population_size, int crossovers, int mutations);
-
-    Solution run();
-
     void initialize();
 
-    Solution cx(Solution &a, Solution &b);
+    Solution crossover(Solution &a, Solution &b);
 
     Solution &selectRandomIndividual();
 
