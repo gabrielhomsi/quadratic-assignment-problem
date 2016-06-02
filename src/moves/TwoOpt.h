@@ -2,11 +2,13 @@
 #define TWOOPT_H
 
 
-#include "Solution.h"
+#include "../Solution.h"
 
 class TwoOpt {
 public:
     Solution move(Solution s, int i, int j);
+
+    int delta(Solution &s, int i, int j);
 };
 
 

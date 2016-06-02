@@ -11,9 +11,15 @@ void Parameters::load(int argc, char **argv) {
 
             ("instance", po::value<string>(), "Path to instance file")
 
-            ("population-size", po::value<int>(), "Population Size")
-            ("crossovers", po::value<int>(), "Number of Crossovers")
-            ("mutations", po::value<int>(), "Number of Mutations")
+            ("ma", "Memetic Algorithm")
+            ("ma-population-size", po::value<int>(), "Population Size")
+            ("ma-crossovers", po::value<int>(), "Number of Crossovers")
+            ("ma-mutations", po::value<int>(), "Number of Mutations")
+
+            ("sa", "Simulated Annealing")
+            ("sa-temperature", po::value<double>(), "Initial Temperature")
+            ("sa-decay-factor", po::value<double>(), "Temperature Decay Factor")
+            ("sa-iterations", po::value<int>(), "Iterations")
 
             ("assertions", "Turn assertions on")
             ("silent", "Silent mode");

@@ -12,8 +12,9 @@ set(
         src/Random.cpp src/Random.h
         src/Solution.cpp src/Solution.h
         src/LocalSearch.cpp src/LocalSearch.h
-        src/MemeticAlgorithm.cpp src/MemeticAlgorithm.h
-        src/TwoOpt.cpp src/TwoOpt.h
+        src/metaheuristics/MemeticAlgorithm.cpp src/metaheuristics/MemeticAlgorithm.h
+        src/metaheuristics/SimulatedAnnealing.cpp src/metaheuristics/SimulatedAnnealing.h
+        src/moves/TwoOpt.cpp src/moves/TwoOpt.h
 )
 
 set(EXECUTABLE_OUTPUT_PATH "release")

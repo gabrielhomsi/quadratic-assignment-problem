@@ -2,21 +2,21 @@
 #define MEMETICALGORITHM_H
 
 
-#include "Solution.h"
+#include "../Solution.h"
 
 class MemeticAlgorithm {
 public:
+    int population_size;
+
+    int crossovers;
+    int mutations;
+
     MemeticAlgorithm(int population_size, int crossovers, int mutations);
 
     Solution run();
 
 private:
     Parameters parameters;
-
-    int population_size;
-
-    int crossovers;
-    int mutations;
 
     Solution best = Solution::trivial();
 

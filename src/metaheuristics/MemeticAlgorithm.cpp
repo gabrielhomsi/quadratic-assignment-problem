@@ -1,18 +1,18 @@
 #include <iostream>
 #include <algorithm>
 #include "MemeticAlgorithm.h"
-#include "LocalSearch.h"
-#include "Random.h"
+#include "../LocalSearch.h"
+#include "../Random.h"
 
 using namespace std;
 
 MemeticAlgorithm::MemeticAlgorithm(int population_size, int crossovers, int mutations) {
-    this->parameters = Parameters::getInstance();
-
     this->population_size = population_size;
 
     this->crossovers = crossovers;
     this->mutations = mutations;
+
+    this->parameters = Parameters::getInstance();
 }
 
 Solution MemeticAlgorithm::run() {
@@ -43,7 +43,7 @@ Solution MemeticAlgorithm::run() {
                 }
 
                 if (parameters.assertions && best.cost != best.evaluate()) {
-                   cout << "Error! best.cost != best.evaluate()" << endl;
+                   cout << "Error! best.cost != best.delta()" << endl;
                 }
             }
         }
@@ -62,7 +62,7 @@ Solution MemeticAlgorithm::run() {
                 }
 
                 if (parameters.assertions && best.cost != best.evaluate()) {
-                    cout << "Error! best.cost != best.evaluate()" << endl;
+                    cout << "Error! best.cost != best.delta()" << endl;
                 }
             }
         }

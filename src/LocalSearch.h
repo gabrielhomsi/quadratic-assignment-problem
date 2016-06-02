@@ -3,7 +3,7 @@
 
 
 #include "Solution.h"
-#include "TwoOpt.h"
+#include "moves/TwoOpt.h"
 
 class LocalSearch {
 public:
