@@ -21,6 +21,8 @@ void Parameters::load(int argc, char **argv) {
             ("sa-decay-factor", po::value<double>(), "Temperature Decay Factor")
             ("sa-iterations", po::value<int>(), "Iterations")
 
+			("qp", "Quadratic Programming Formulation")
+
             ("assertions", "Turn assertions on")
             ("silent", "Silent mode");
 

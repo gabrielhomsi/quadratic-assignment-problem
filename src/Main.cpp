@@ -2,6 +2,7 @@
 #include "Data.h"
 #include "metaheuristics/MemeticAlgorithm.h"
 #include "metaheuristics/SimulatedAnnealing.h"
+#include "QuadraticFormulation.h"
 
 using namespace std;
 
@@ -27,7 +28,11 @@ int main(int argc, char **argv) {
         Solution s0 = Solution::trivial();
 
         sa.run(s0);
-    }
+	} else if (parameters.vm.count("qp")) {
+		QuadraticFormulation qp;
+
+		qp.run();
+	}
 
     return 0;
 }

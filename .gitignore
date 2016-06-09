@@ -6,3 +6,7 @@ instances
 release
 .results
 .idea
+/x64/Debug
+/qap.lp
+/qap.sdf
+/qap.v12.suo

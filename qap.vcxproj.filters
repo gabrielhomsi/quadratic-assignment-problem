@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\input">
+      <UniqueIdentifier>{f45eb14d-44d9-41da-88d4-fde3d55a1d81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\util">
+      <UniqueIdentifier>{9e3ce498-bed9-4960-b5c4-fa5d6327ba37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\algo">
+      <UniqueIdentifier>{7cc4f0f9-ee01-41cf-b6e3-a445f4bae8dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\output">
+      <UniqueIdentifier>{6117c9f3-491d-4bb1-89b2-9948f4c9fc02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\input">
+      <UniqueIdentifier>{57a6e84b-6948-4558-9561-ba55086c768d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\algo">
+      <UniqueIdentifier>{4b927a2a-8b95-4363-aa69-bff2922cae02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\output">
+      <UniqueIdentifier>{3caf56de-ffe1-43d5-a314-c3738e67359f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\util">
+      <UniqueIdentifier>{7f789dea-3313-4590-989a-ae30f1c440a3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Data.cpp">
+      <Filter>Source Files\input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Parameters.cpp">
+      <Filter>Source Files\input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Solution.cpp">
+      <Filter>Source Files\output</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LocalSearch.cpp">
+      <Filter>Source Files\algo</Filter>
+    </ClCompile>
+    <ClCompile Include="src\metaheuristics\MemeticAlgorithm.cpp">
+      <Filter>Source Files\algo</Filter>
+    </ClCompile>
+    <ClCompile Include="src\metaheuristics\SimulatedAnnealing.cpp">
+      <Filter>Source Files\algo</Filter>
+    </ClCompile>
+    <ClCompile Include="src\moves\TwoOpt.cpp">
+      <Filter>Source Files\algo</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Random.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QuadraticFormulation.cpp">
+      <Filter>Source Files\algo</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Data.h">
+      <Filter>Header Files\input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Parameters.h">
+      <Filter>Header Files\input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Random.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Singleton.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LocalSearch.h">
+      <Filter>Header Files\algo</Filter>
+    </ClInclude>
+    <ClInclude Include="src\metaheuristics\MemeticAlgorithm.h">
+      <Filter>Header Files\algo</Filter>
+    </ClInclude>
+    <ClInclude Include="src\metaheuristics\SimulatedAnnealing.h">
+      <Filter>Header Files\algo</Filter>
+    </ClInclude>
+    <ClInclude Include="src\moves\TwoOpt.h">
+      <Filter>Header Files\algo</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Solution.h">
+      <Filter>Header Files\output</Filter>
+    </ClInclude>
+    <ClInclude Include="src\QuadraticFormulation.h">
+      <Filter>Header Files\algo</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
