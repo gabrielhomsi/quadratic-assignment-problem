@@ -13,8 +13,8 @@ void Parameters::load(int argc, char **argv) {
 
             ("ma", "Memetic Algorithm")
             ("ma-population-size", po::value<int>(), "Population Size")
-            ("ma-crossovers", po::value<int>(), "Number of Crossovers")
-            ("ma-mutations", po::value<int>(), "Number of Mutations")
+            ("ma-crossover-probability", po::value<double>(), "Number of Crossovers")
+            ("ma-mutation-probability", po::value<double>(), "Number of Mutations")
 
             ("sa", "Simulated Annealing")
             ("sa-temperature", po::value<double>(), "Initial Temperature")

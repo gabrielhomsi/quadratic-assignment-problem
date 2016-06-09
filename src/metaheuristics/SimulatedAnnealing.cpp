@@ -1,7 +1,6 @@
 #include "SimulatedAnnealing.h"
 #include "../Random.h"
 #include "../moves/TwoOpt.h"
-#include "../LocalSearch.h"
 #include <iostream>
 
 using namespace std;
@@ -11,14 +10,13 @@ SimulatedAnnealing::SimulatedAnnealing(double T, double decay_factor,
     this->T = T;
     this->decay_factor = decay_factor;
     this->iterations = iterations;
-
-    this->parameters = Parameters::getInstance();
-
-    this->data = Data::getInstance();
 }
 
-Solution SimulatedAnnealing::run(Solution s0) {
+Solution SimulatedAnnealing::run(Solution &s0) {
     Data &data = Data::getInstance();
+
+    Parameters &parameters = Parameters::getInstance();
+
     TwoOpt twoOpt;
 
     Solution s = s0;
@@ -43,6 +41,10 @@ Solution SimulatedAnnealing::run(Solution s0) {
                 }
             }
         }
+    }
+
+    if (!parameters.silent) {
+        cout << "[SA] " << s.cost << endl;
     }
 
     if (parameters.assertions && s.cost != s.evaluate()) {

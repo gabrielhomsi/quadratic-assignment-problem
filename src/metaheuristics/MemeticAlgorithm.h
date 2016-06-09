@@ -8,10 +8,10 @@ class MemeticAlgorithm {
 public:
     int population_size;
 
-    int crossovers;
-    int mutations;
+    double crossover_probability;
+    double mutation_probability;
 
-    MemeticAlgorithm(int population_size, int crossovers, int mutations);
+    MemeticAlgorithm(int population_size, double crossover_probability, double mutation_probability);
 
     Solution run();
 
@@ -24,17 +24,21 @@ private:
 
     void initialize();
 
+    pair<Solution *, Solution *> selectTwoParentsRandomly();
+
+    Solution &tournamentSelection(int tournament_size);
+
     Solution crossover(Solution &a, Solution &b);
 
     Solution &selectRandomIndividual();
 
     void mutate(Solution &s);
 
-    void select();
-
-    pair<Solution*, Solution*> selectTwoParentsRandomly();
+    void selectNextGeneration();
 
     bool converged();
+
+    void restartPopulation();
 };
 
 

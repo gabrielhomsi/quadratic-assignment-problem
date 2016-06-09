@@ -17,6 +17,15 @@ set(
         src/moves/TwoOpt.cpp src/moves/TwoOpt.h
 )
 
+
+
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/")
+
+#find_package(CPLEX)
+#if (TARGET cplex-library)
+#    target_link_libraries(Main cplex-library)
+#endif ()
+
 set(EXECUTABLE_OUTPUT_PATH "release")
 
 add_executable(Main ${SOURCE_FILES})

@@ -22,6 +22,7 @@ private:
     Parameters parameters;
 
     void readDistance(std::ifstream &instance_file);
+
     void readWeight(std::ifstream &instance_file);
 };
 

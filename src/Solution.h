@@ -23,9 +23,6 @@ public:
     int distance(Solution &s);
 
     void display();
-
-private:
-    Data data;
 };
 
 

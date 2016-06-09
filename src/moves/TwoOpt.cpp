@@ -1,3 +1,4 @@
+#include <iostream>
 #include "TwoOpt.h"
 
 int TwoOpt::delta(Solution &s, int i, int j) {
@@ -19,10 +20,15 @@ int TwoOpt::delta(Solution &s, int i, int j) {
 }
 
 Solution TwoOpt::move(Solution s, int i, int j) {
+    Parameters &parameters = Parameters::getInstance();
+
     s.cost += delta(s, i, j);
 
     swap(s.p[i], s.p[j]);
 
+    if (parameters.assertions && s.cost != s.evaluate()) {
+        cout << "Error! s.cost != s.evaluate()" << endl;
+    }
+
     return s;
 }
-

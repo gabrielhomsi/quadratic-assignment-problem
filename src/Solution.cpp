@@ -26,12 +26,14 @@ Solution Solution::random() {
 }
 
 Solution::Solution(vector<int> p) {
-    this->data = Data::getInstance();
     this->p = p;
-    this->cost = this->evaluate();
+
+    this->cost = evaluate();
 }
 
 int Solution::evaluate() {
+    Data &data = Data::getInstance();
+
     int cost = 0;
 
     for (int i = 0; i < data.n; i++) {

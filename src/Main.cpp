@@ -13,8 +13,8 @@ int main(int argc, char **argv) {
 
     if (parameters.vm.count("ma")) {
         MemeticAlgorithm ma(parameters.vm["ma-population-size"].as<int>(),
-                            parameters.vm["ma-crossovers"].as<int>(),
-                            parameters.vm["ma-mutations"].as<int>());
+                            parameters.vm["ma-crossover-probability"].as<double>(),
+                            parameters.vm["ma-mutation-probability"].as<double>());
 
         Solution best = ma.run();
 

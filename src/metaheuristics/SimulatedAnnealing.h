@@ -17,12 +17,7 @@ public:
 
     SimulatedAnnealing(double T, double decay_factor, int iterations);
 
-    Solution run(Solution s0);
-
-private:
-    Data data;
-
-    Parameters parameters;
+    Solution run(Solution &s0);
 };
 
 
