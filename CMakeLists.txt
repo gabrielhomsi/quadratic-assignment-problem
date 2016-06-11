@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.3)
 project(qap)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -O4 -lboost_program_options")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11 -DIL_STD -O4")
 
 set(
         SOURCE_FILES
@@ -24,7 +24,10 @@ set(
         src/neighborhoods/Neighborhood.h
         src/search/GuidedLocalSearch.cpp
         src/search/GuidedLocalSearch.h
-        src/mutations/TwoOptMutation.cpp src/mutations/TwoOptMutation.h
+        src/mutations/TwoOptMutation.cpp
+        src/mutations/TwoOptMutation.h
+        src/QuadraticFormulation.cpp
+        src/QuadraticFormulation.h
 )
 
 include_directories(
@@ -34,10 +37,25 @@ include_directories(
         src/metaheuristics/evolutionary_algorithm
         src/neighborhoods
         src/search
+        /opt/ibm/ILOG/CPLEX_Studio1263/cplex/include
+        /opt/ibm/ILOG/CPLEX_Studio1263/concert/include
 )
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/")
+link_directories(
+        /opt/ibm/ILOG/CPLEX_Studio1263/cplex/lib/x86-64_linux/static_pic
+        /opt/ibm/ILOG/CPLEX_Studio1263/concert/lib/x86-64_linux/static_pic
+)
 
 set(EXECUTABLE_OUTPUT_PATH "release")
 
 add_executable(Main ${SOURCE_FILES})
+
+target_link_libraries(
+        Main
+        boost_program_options
+        ilocplex
+        concert
+        cplex
+        m
+        pthread
+)
