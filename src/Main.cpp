@@ -3,6 +3,7 @@
 #include <search/GuidedLocalSearch.h>
 #include "metaheuristics/MemeticAlgorithm.h"
 #include "metaheuristics/SimulatedAnnealing.h"
+#include "QuadraticFormulation.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -31,7 +32,11 @@ int main(int argc, char **argv) {
         Solution s0 = Solution::trivial();
 
         sa.run(s0);
-    }
+	} else if (parameters.vm.count("qp")) {
+		QuadraticFormulation qp;
+
+		qp.run();
+	}
 
     high_resolution_clock::time_point t2 = high_resolution_clock::now();
 

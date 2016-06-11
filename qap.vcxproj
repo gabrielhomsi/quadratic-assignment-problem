@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{69715AAB-E470-4EEC-87E1-3F92C2826198}</ProjectGuid>
+    <RootNamespace>qap</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="props\Boost.props" />
+    <Import Project="props\CplexDebug64.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="props\Boost.props" />
+    <Import Project="props\CplexRelease64.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <Optimization>Full</Optimization>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Data.cpp" />
+    <ClCompile Include="src\LocalSearch.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\metaheuristics\MemeticAlgorithm.cpp" />
+    <ClCompile Include="src\metaheuristics\SimulatedAnnealing.cpp" />
+    <ClCompile Include="src\moves\TwoOpt.cpp" />
+    <ClCompile Include="src\Parameters.cpp" />
+    <ClCompile Include="src\QuadraticFormulation.cpp" />
+    <ClCompile Include="src\Random.cpp" />
+    <ClCompile Include="src\Solution.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Data.h" />
+    <ClInclude Include="src\LocalSearch.h" />
+    <ClInclude Include="src\metaheuristics\MemeticAlgorithm.h" />
+    <ClInclude Include="src\metaheuristics\SimulatedAnnealing.h" />
+    <ClInclude Include="src\moves\TwoOpt.h" />
+    <ClInclude Include="src\Parameters.h" />
+    <ClInclude Include="src\QuadraticFormulation.h" />
+    <ClInclude Include="src\Random.h" />
+    <ClInclude Include="src\Singleton.h" />
+    <ClInclude Include="src\Solution.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
