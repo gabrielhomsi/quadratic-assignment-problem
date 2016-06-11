@@ -1,7 +1,7 @@
-#include "SimulatedAnnealing.h"
-#include "../Random.h"
-#include "../moves/TwoOpt.h"
 #include <iostream>
+#include "SimulatedAnnealing.h"
+#include "Random.h"
+#include "neighborhoods/TwoOpt.h"
 
 using namespace std;
 

@@ -4,8 +4,8 @@
 
 #include <vector>
 #include <utility>
-#include "../Solution.h"
-#include "../Parameters.h"
+#include "Solution.h"
+#include "Parameters.h"
 
 class SimulatedAnnealing {
 public:

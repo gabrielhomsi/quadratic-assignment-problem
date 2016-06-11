@@ -1,8 +1,11 @@
 #include <iostream>
 #include <algorithm>
+#include <search/GuidedLocalSearch.h>
+#include <mutations/TwoOptMutation.h>
+#include <search/LocalSearch.h>
 #include "MemeticAlgorithm.h"
-#include "../LocalSearch.h"
-#include "../Random.h"
+#include "Random.h"
+#include "CycleCrossover.h"
 
 using namespace std;
 
@@ -10,67 +13,25 @@ MemeticAlgorithm::MemeticAlgorithm(int population_size, double crossover_probabi
     this->population_size = population_size;
 
     this->crossover_probability = crossover_probability;
-    this->mutation_probability = mutation_probability;
 
-    this->parameters = Parameters::getInstance();
+    this->mutation_probability = mutation_probability;
 }
 
 Solution MemeticAlgorithm::run() {
-    initialize();
+    Parameters &parameters = Parameters::getInstance();
 
     if (!parameters.silent) {
-        cout << "=> Main Loop" << endl;
+        cout << "=> Memetic Algorithm" << endl;
     }
 
-    LocalSearch ls;
+    initializePopulation();
 
-    while (true) {
+    for (int i = 0; ; i++) {
         if (!parameters.silent) {
-            cout << "=> Generation" << endl;
+            cout << "=> Generation " << i + 1 << endl;
         }
 
-        for (int i = 0; i < population_size; i++) {
-            for (int j = i + 1; j < population_size; j++) {
-                if (crossover_probability >= util::random_double()) {
-                    Solution child = crossover(population[i], population[j]);
-                    ls.run(child);
-                    population.push_back(child);
-
-                    if (child.cost < best.cost) {
-                        best = child;
-
-                        if (!parameters.silent) {
-                            cout << "Improved! => " << best.cost << endl;
-                        }
-
-                        if (parameters.assertions && best.cost != best.evaluate()) {
-                            cout << "Error! best.cost != best.delta()" << endl;
-                        }
-                    }
-                }
-            }
-        }
-
-        for (int i = 0; i < population_size; i++) {
-            if (mutation_probability >= util::random_double()) {
-                Solution &individual = population[i];
-                mutate(individual);
-                ls.run(individual);
-                population.push_back(individual);
-
-                if (individual.cost < best.cost) {
-                    best = individual;
-
-                    if (!parameters.silent) {
-                        cout << "Improved! => " << best.cost << endl;
-                    }
-
-                    if (parameters.assertions && best.cost != best.evaluate()) {
-                        cout << "Error! best.cost != best.delta()" << endl;
-                    }
-                }
-            }
-        }
+        updatePopulation();
 
         selectNextGeneration();
 
@@ -80,13 +41,17 @@ Solution MemeticAlgorithm::run() {
             }
 
             break;
+
+//            restartPopulation();
         }
     }
 
     return best;
 }
 
-void MemeticAlgorithm::initialize() {
+void MemeticAlgorithm::initializePopulation() {
+    Parameters &parameters = Parameters::getInstance();
+
     if (!parameters.silent) {
         cout << "=> Initialize" << endl;
     }
@@ -95,7 +60,7 @@ void MemeticAlgorithm::initialize() {
 
     while ((int) population.size() < population_size) {
         Solution s = Solution::random();
-        ls.run(s);
+        s = ls.run(s);
 
         if (s.cost < best.cost) {
             best = s;
@@ -106,6 +71,58 @@ void MemeticAlgorithm::initialize() {
         }
 
         population.push_back(s);
+    }
+}
+
+void MemeticAlgorithm::updatePopulation() {
+    Parameters &parameters = Parameters::getInstance();
+
+    CycleCrossover cx;
+    TwoOptMutation mutation;
+
+    LocalSearch ls;
+
+    for (int i = 0; i < population_size; i++) {
+        if (crossover_probability >= util::random_double()) {
+            // pair<Solution*, Solution*> parents = selectTwoParentsRandomly();
+            pair<Solution *, Solution *> parents = make_pair(&tournamentSelection(1 + 0.3 * population_size),
+                                                             &tournamentSelection(1 + 0.3 * population_size));
+            Solution child = cx.crossover(*parents.first, *parents.second);
+            child = ls.run(child);
+            population.push_back(child);
+
+            if (child.cost < best.cost) {
+                best = child;
+
+                if (!parameters.silent) {
+                    cout << "Improved! => " << best.cost << endl;
+                }
+
+                if (parameters.assertions && best.cost != best.evaluate()) {
+                    cout << "Error! best.featureCost != best.evaluate()" << endl;
+                }
+            }
+        }
+    }
+
+    for (int i = 0; i < population_size; i++) {
+        if (mutation_probability >= util::random_double()) {
+            Solution mutated = mutation.mutate(selectRandomIndividual());
+            mutated = ls.run(mutated);
+            population.push_back(mutated);
+
+            if (mutated.cost < best.cost) {
+                best = mutated;
+
+                if (!parameters.silent) {
+                    cout << "Improved! => " << best.cost << endl;
+                }
+
+                if (parameters.assertions && best.cost != best.evaluate()) {
+                    cout << "Error! best.featureCost != best.evaluate()" << endl;
+                }
+            }
+        }
     }
 }
 
@@ -132,7 +149,7 @@ Solution &MemeticAlgorithm::tournamentSelection(int tournament_size) {
     Solution &winner = population[candidates[0]];
 
     for (int i = 0; i < tournament_size; i++) {
-        Solution &contestant = population[i];
+        Solution &contestant = population[candidates[i]];
 
         if (contestant.cost < winner.cost) {
             winner = contestant;
@@ -142,81 +159,10 @@ Solution &MemeticAlgorithm::tournamentSelection(int tournament_size) {
     return winner;
 }
 
-Solution MemeticAlgorithm::crossover(Solution &a, Solution &b) {
-    vector<int> p;
-    p.resize(a.p.size());
-
-    for (int i = 0; i < (int) p.size(); i++) {
-        p[i] = -1;
-
-        if (a.p[i] == b.p[i]) {
-            p[i] = a.p[i];
-        }
-    }
-
-    for (int i = 0; i < (int) p.size(); i++) {
-        if (p[i] != -1) {
-            continue;
-        }
-
-        int choice = util::random_int(0, 1);
-
-        Solution *c, *d;
-
-        if (choice == 0) {
-            c = &a;
-            d = &b;
-        } else {
-            c = &b;
-            d = &a;
-        }
-
-        p[i] = c->p[i];
-
-        int j = i;
-
-        while (true) {
-            // Finds where the facility d->p[j] is located in c->p
-            vector<int>::iterator it = find(c->p.begin(), c->p.end(), d->p[j]);
-            int k = it - c->p.begin();
-
-            // Break if already assigned
-            if (p[k] == c->p[k]) {
-                break;
-            }
-
-            // Assign
-            p[k] = c->p[k];
-
-            // Moving index
-            j = k;
-        }
-    }
-
-    Solution result(p);
-
-    return result;
-}
-
 Solution &MemeticAlgorithm::selectRandomIndividual() {
     int i = util::random_int(0, (int) population.size() - 1);
 
     return population[i];
-}
-
-void MemeticAlgorithm::mutate(Solution &s) {
-    TwoOpt twoOpt;
-
-    for (int i = 0; i < (int) s.p.size() / 10; i++) {
-        int j, k;
-
-        do {
-            j = util::random_int(0, (int) s.p.size() - 1);
-            k = util::random_int(0, (int) s.p.size() - 1);
-        } while (j == k);
-
-        s = twoOpt.move(s, j, k);
-    }
 }
 
 void MemeticAlgorithm::selectNextGeneration() {
@@ -231,6 +177,8 @@ void MemeticAlgorithm::selectNextGeneration() {
 }
 
 bool MemeticAlgorithm::converged() {
+    Parameters &parameters = Parameters::getInstance();
+
     Data &data = Data::getInstance();
 
     double average_distance = 0;
@@ -251,6 +199,8 @@ bool MemeticAlgorithm::converged() {
 }
 
 void MemeticAlgorithm::restartPopulation() {
+    Parameters &parameters = Parameters::getInstance();
+
     if (!parameters.silent) {
         cout << endl << "=== Restarting ===" << endl << endl;
     }
@@ -262,11 +212,11 @@ void MemeticAlgorithm::restartPopulation() {
              return s1.cost < s2.cost; // ascending
          });
 
-    for (int i = 0; i < 1 + (int) population.size() / 10; i++) {
+    for (int i = 0; i < 1 + 0.01 * population.size(); i++) {
         restarted.push_back(population[i]);
     }
 
     population = restarted;
 
-    initialize();
+    initializePopulation();
 }

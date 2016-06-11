@@ -1,15 +1,19 @@
 #include <iostream>
-#include "Data.h"
+#include <chrono>
+#include <search/GuidedLocalSearch.h>
 #include "metaheuristics/MemeticAlgorithm.h"
 #include "metaheuristics/SimulatedAnnealing.h"
 
 using namespace std;
+using namespace std::chrono;
 
 int main(int argc, char **argv) {
     Parameters &parameters = Parameters::getInstance();
     parameters.load(argc, argv);
 
     Data::getInstance().read();
+
+    high_resolution_clock::time_point t1 = high_resolution_clock::now();
 
     if (parameters.vm.count("ma")) {
         MemeticAlgorithm ma(parameters.vm["ma-population-size"].as<int>(),
@@ -18,7 +22,7 @@ int main(int argc, char **argv) {
 
         Solution best = ma.run();
 
-        cout << best.cost << endl;
+        cout << best.cost << "\t";
     } else if (parameters.vm.count("sa")) {
         SimulatedAnnealing sa(parameters.vm["sa-temperature"].as<double>(),
                               parameters.vm["sa-decay-factor"].as<double>(),
@@ -28,6 +32,12 @@ int main(int argc, char **argv) {
 
         sa.run(s0);
     }
+
+    high_resolution_clock::time_point t2 = high_resolution_clock::now();
+
+    auto duration = duration_cast<microseconds>(t2 - t1).count() * 1e-6;
+
+    cout << duration << endl;
 
     return 0;
 }

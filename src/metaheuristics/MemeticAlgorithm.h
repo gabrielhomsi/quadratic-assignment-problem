@@ -2,13 +2,14 @@
 #define MEMETICALGORITHM_H
 
 
-#include "../Solution.h"
+#include "Solution.h"
 
 class MemeticAlgorithm {
 public:
     int population_size;
 
     double crossover_probability;
+
     double mutation_probability;
 
     MemeticAlgorithm(int population_size, double crossover_probability, double mutation_probability);
@@ -16,23 +17,19 @@ public:
     Solution run();
 
 private:
-    Parameters parameters;
-
     Solution best = Solution::trivial();
 
     vector<Solution> population;
 
-    void initialize();
+    void initializePopulation();
+
+    void updatePopulation();
 
     pair<Solution *, Solution *> selectTwoParentsRandomly();
 
     Solution &tournamentSelection(int tournament_size);
 
-    Solution crossover(Solution &a, Solution &b);
-
     Solution &selectRandomIndividual();
-
-    void mutate(Solution &s);
 
     void selectNextGeneration();
 

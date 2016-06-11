@@ -2,6 +2,7 @@
 #define SOLUTION_H
 
 #include <vector>
+#include <boost/optional.hpp>
 #include "Data.h"
 
 using namespace std;

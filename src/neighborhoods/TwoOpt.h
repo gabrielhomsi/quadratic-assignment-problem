@@ -1,22 +1,21 @@
-#ifndef LOCALSEARCH_H
-#define LOCALSEARCH_H
+#ifndef TWOOPT_H
+#define TWOOPT_H
 
 
 #include <boost/optional.hpp>
 #include "Solution.h"
-#include "moves/TwoOpt.h"
+#include "Neighborhood.h"
 
-class LocalSearch {
+class TwoOpt : public Neighborhood {
 public:
-    TwoOpt twoOpt;
-
-    void run(Solution &s);
-
-private:
     boost::optional<Solution> getFirstImprovingNeighbor(Solution &s);
 
     boost::optional<Solution> getBestImprovingNeighbor(Solution &s);
+
+    Solution move(Solution s, int i, int j);
+
+    int delta(Solution &s, int i, int j);
 };
 
 
-#endif //LOCALSEARCH_H
+#endif //TWOOPT_H
