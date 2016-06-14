@@ -19,11 +19,7 @@ set(
         src/crossovers/CycleCrossover.h
         src/neighborhoods/ThreeOpt.cpp
         src/neighborhoods/ThreeOpt.h
-        src/search/VariableNeighborhoodDescent.cpp
-        src/search/VariableNeighborhoodDescent.h
         src/neighborhoods/Neighborhood.h
-        src/search/GuidedLocalSearch.cpp
-        src/search/GuidedLocalSearch.h
         src/mutations/TwoOptMutation.cpp
         src/mutations/TwoOptMutation.h
         src/QuadraticFormulation.cpp

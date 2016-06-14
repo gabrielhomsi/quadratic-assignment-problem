@@ -8,7 +8,7 @@
 
 class LocalSearch {
 public:
-    Solution run(Solution &s);
+    void run(Solution &s);
 
 private:
     TwoOpt twoOpt;

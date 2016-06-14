@@ -10,9 +10,9 @@ public:
 
     double crossover_probability;
 
-    double mutation_probability;
+    double mutation_variance;
 
-    MemeticAlgorithm(int population_size, double crossover_probability, double mutation_probability);
+    MemeticAlgorithm(int population_size, double crossover_probability, double mutation_variance);
 
     Solution run();
 
@@ -27,15 +27,11 @@ private:
 
     pair<Solution *, Solution *> selectTwoParentsRandomly();
 
-    Solution &tournamentSelection(int tournament_size);
-
     Solution &selectRandomIndividual();
 
     void selectNextGeneration();
 
     bool converged();
-
-    void restartPopulation();
 };
 
 

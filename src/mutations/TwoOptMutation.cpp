@@ -2,8 +2,12 @@
 #include <Random.h>
 #include "TwoOptMutation.h"
 
-Solution TwoOptMutation::mutate(Solution s) {
-    for (int i = 0; i < 1 + 0.3 * s.p.size(); i++) {
+using namespace std;
+
+void TwoOptMutation::mutate(Solution &s, double mutation_variance) {
+    double proportion = abs(mutation_variance * util::random_normal_double());
+
+    for (int i = 0; i < proportion * s.p.size(); i++) {
         int j, k;
 
         do {
@@ -13,6 +17,4 @@ Solution TwoOptMutation::mutate(Solution s) {
 
         s = twoOpt.move(s, j, k);
     }
-
-    return s;
 }

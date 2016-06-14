@@ -1,6 +1,5 @@
 #include <iostream>
 #include <chrono>
-#include <search/GuidedLocalSearch.h>
 #include "metaheuristics/MemeticAlgorithm.h"
 #include "metaheuristics/SimulatedAnnealing.h"
 #include "QuadraticFormulation.h"
@@ -19,11 +18,14 @@ int main(int argc, char **argv) {
     if (parameters.vm.count("ma")) {
         MemeticAlgorithm ma(parameters.vm["ma-population-size"].as<int>(),
                             parameters.vm["ma-crossover-probability"].as<double>(),
-                            parameters.vm["ma-mutation-probability"].as<double>());
+                            parameters.vm["ma-mutation-variance"].as<double>());
 
         Solution best = ma.run();
 
-        cout << best.cost << "\t";
+        cout << best.cost << endl;
+
+        cout << "Permutation: " << endl;
+        best.display();
     } else if (parameters.vm.count("sa")) {
         SimulatedAnnealing sa(parameters.vm["sa-temperature"].as<double>(),
                               parameters.vm["sa-decay-factor"].as<double>(),
@@ -32,11 +34,11 @@ int main(int argc, char **argv) {
         Solution s0 = Solution::trivial();
 
         sa.run(s0);
-	} else if (parameters.vm.count("qp")) {
-		QuadraticFormulation qp;
+    } else if (parameters.vm.count("qp")) {
+        QuadraticFormulation qp;
 
-		qp.run();
-	}
+        qp.run();
+    }
 
     high_resolution_clock::time_point t2 = high_resolution_clock::now();
 

@@ -3,9 +3,7 @@
 
 using namespace std;
 
-Data::Data() {
-    this->parameters = Parameters::getInstance();
-}
+Data::Data() : parameters(Parameters::getInstance()) { }
 
 void Data::read() {
     ifstream instance_file(parameters.vm["instance"].as<string>());

@@ -10,6 +10,8 @@ namespace util {
     double random_double();
 
     double random_double(double a, double b);
+
+    double random_normal_double();
 };
 
 

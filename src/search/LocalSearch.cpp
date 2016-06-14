@@ -3,9 +3,7 @@
 
 using namespace std;
 
-Solution LocalSearch::run(Solution &s0) {
-    Solution s = s0;
-
+void LocalSearch::run(Solution &s) {
     while (true) {
         boost::optional<Solution> s_prime;
 
@@ -13,7 +11,7 @@ Solution LocalSearch::run(Solution &s0) {
 
         // local minimum
         if (!s_prime.is_initialized()) {
-            return s;
+            return;
         }
 
         s = *s_prime;

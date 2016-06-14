@@ -13,15 +13,15 @@ void Parameters::load(int argc, char **argv) {
 
             ("ma", "Memetic Algorithm")
             ("ma-population-size", po::value<int>(), "Population Size")
-            ("ma-crossover-probability", po::value<double>(), "Number of Crossovers")
-            ("ma-mutation-probability", po::value<double>(), "Number of Mutations")
+            ("ma-crossover-probability", po::value<double>(), "Crossover Probability")
+            ("ma-mutation-variance", po::value<double>(), "Mutation Variance")
 
             ("sa", "Simulated Annealing")
             ("sa-temperature", po::value<double>(), "Initial Temperature")
             ("sa-decay-factor", po::value<double>(), "Temperature Decay Factor")
             ("sa-iterations", po::value<int>(), "Iterations")
 
-			("qp", "Quadratic Programming Formulation")
+            ("qp", "Quadratic Programming Formulation")
 
             ("assertions", "Turn assertions on")
             ("silent", "Silent mode");

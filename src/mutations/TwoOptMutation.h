@@ -7,7 +7,7 @@
 
 class TwoOptMutation {
 public:
-    Solution mutate(Solution s);
+    void mutate(Solution &s, double mutation_variance);
 
 private:
     TwoOpt twoOpt;

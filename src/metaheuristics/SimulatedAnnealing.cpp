@@ -6,11 +6,9 @@
 using namespace std;
 
 SimulatedAnnealing::SimulatedAnnealing(double T, double decay_factor,
-                                       int iterations) {
-    this->T = T;
-    this->decay_factor = decay_factor;
-    this->iterations = iterations;
-}
+                                       int iterations) : T(T),
+                                                         decay_factor(decay_factor),
+                                                         iterations(iterations) { }
 
 Solution SimulatedAnnealing::run(Solution &s0) {
     Data &data = Data::getInstance();
