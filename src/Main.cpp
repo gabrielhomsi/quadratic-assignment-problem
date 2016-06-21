@@ -22,10 +22,10 @@ int main(int argc, char **argv) {
 
         Solution best = ma.run();
 
-        cout << best.cost << endl;
-
         cout << "Permutation: " << endl;
         best.display();
+
+        cout << best.cost << ", ";
     } else if (parameters.vm.count("sa")) {
         SimulatedAnnealing sa(parameters.vm["sa-temperature"].as<double>(),
                               parameters.vm["sa-decay-factor"].as<double>(),

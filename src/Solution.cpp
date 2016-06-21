@@ -59,7 +59,7 @@ int Solution::distance(Solution &s) {
 
 void Solution::display() {
     for (int i = 0; i < (int) p.size(); i++) {
-        cout << setfill(' ') << setw(3) << p[i] << " ";
+        cout << setfill(' ') << setw(3) << p[i] + 1 << " ";
     }
 
     cout << endl;
