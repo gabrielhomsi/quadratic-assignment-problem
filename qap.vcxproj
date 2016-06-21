@@ -39,6 +39,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>C:\Users\martinelli\Documents\Research\Quadratic Assigment Problem\code\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -46,35 +47,43 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <DebugInformationFormat>None</DebugInformationFormat>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Full</Optimization>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>C:\Users\martinelli\Documents\Research\Quadratic Assigment Problem\code\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>false</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\crossovers\CycleCrossover.cpp" />
     <ClCompile Include="src\Data.cpp" />
-    <ClCompile Include="src\LocalSearch.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\metaheuristics\MemeticAlgorithm.cpp" />
     <ClCompile Include="src\metaheuristics\SimulatedAnnealing.cpp" />
-    <ClCompile Include="src\moves\TwoOpt.cpp" />
+    <ClCompile Include="src\mutations\TwoOptMutation.cpp" />
+    <ClCompile Include="src\neighborhoods\ThreeOpt.cpp" />
+    <ClCompile Include="src\neighborhoods\TwoOpt.cpp" />
     <ClCompile Include="src\Parameters.cpp" />
     <ClCompile Include="src\QuadraticFormulation.cpp" />
     <ClCompile Include="src\Random.cpp" />
+    <ClCompile Include="src\search\LocalSearch.cpp" />
     <ClCompile Include="src\Solution.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\crossovers\CycleCrossover.h" />
     <ClInclude Include="src\Data.h" />
-    <ClInclude Include="src\LocalSearch.h" />
     <ClInclude Include="src\metaheuristics\MemeticAlgorithm.h" />
     <ClInclude Include="src\metaheuristics\SimulatedAnnealing.h" />
-    <ClInclude Include="src\moves\TwoOpt.h" />
+    <ClInclude Include="src\mutations\TwoOptMutation.h" />
+    <ClInclude Include="src\neighborhoods\Neighborhood.h" />
+    <ClInclude Include="src\neighborhoods\ThreeOpt.h" />
+    <ClInclude Include="src\neighborhoods\TwoOpt.h" />
     <ClInclude Include="src\Parameters.h" />
     <ClInclude Include="src\QuadraticFormulation.h" />
     <ClInclude Include="src\Random.h" />
+    <ClInclude Include="src\search\LocalSearch.h" />
     <ClInclude Include="src\Singleton.h" />
     <ClInclude Include="src\Solution.h" />
   </ItemGroup>

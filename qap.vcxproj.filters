@@ -37,6 +37,24 @@
     <Filter Include="Source Files\util">
       <UniqueIdentifier>{7f789dea-3313-4590-989a-ae30f1c440a3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\algo\neighborhoods">
+      <UniqueIdentifier>{b91918db-8ec6-4a02-87f2-053ae6004837}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\algo\neighborhoods">
+      <UniqueIdentifier>{1db2c19a-5108-4a73-8b64-5dab73cf2eab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\algo\mutations">
+      <UniqueIdentifier>{d1ae5eca-618b-4462-bd98-a3f06a5eaba2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\algo\crossovers">
+      <UniqueIdentifier>{9a6eab8e-8240-4980-b7e4-d5e2c2b81ec7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\algo\mutations">
+      <UniqueIdentifier>{0830b854-9550-419b-91b8-f4f06dbe807d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\algo\crossovers">
+      <UniqueIdentifier>{ced28781-5101-4dd4-84a9-3e025f2c8212}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Main.cpp">
@@ -51,16 +69,10 @@
     <ClCompile Include="src\Solution.cpp">
       <Filter>Source Files\output</Filter>
     </ClCompile>
-    <ClCompile Include="src\LocalSearch.cpp">
-      <Filter>Source Files\algo</Filter>
-    </ClCompile>
     <ClCompile Include="src\metaheuristics\MemeticAlgorithm.cpp">
       <Filter>Source Files\algo</Filter>
     </ClCompile>
     <ClCompile Include="src\metaheuristics\SimulatedAnnealing.cpp">
-      <Filter>Source Files\algo</Filter>
-    </ClCompile>
-    <ClCompile Include="src\moves\TwoOpt.cpp">
       <Filter>Source Files\algo</Filter>
     </ClCompile>
     <ClCompile Include="src\Random.cpp">
@@ -68,6 +80,21 @@
     </ClCompile>
     <ClCompile Include="src\QuadraticFormulation.cpp">
       <Filter>Source Files\algo</Filter>
+    </ClCompile>
+    <ClCompile Include="src\search\LocalSearch.cpp">
+      <Filter>Source Files\algo</Filter>
+    </ClCompile>
+    <ClCompile Include="src\neighborhoods\ThreeOpt.cpp">
+      <Filter>Source Files\algo\neighborhoods</Filter>
+    </ClCompile>
+    <ClCompile Include="src\neighborhoods\TwoOpt.cpp">
+      <Filter>Source Files\algo\neighborhoods</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mutations\TwoOptMutation.cpp">
+      <Filter>Source Files\algo\mutations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\crossovers\CycleCrossover.cpp">
+      <Filter>Source Files\algo\crossovers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -83,16 +110,10 @@
     <ClInclude Include="src\Singleton.h">
       <Filter>Header Files\util</Filter>
     </ClInclude>
-    <ClInclude Include="src\LocalSearch.h">
-      <Filter>Header Files\algo</Filter>
-    </ClInclude>
     <ClInclude Include="src\metaheuristics\MemeticAlgorithm.h">
       <Filter>Header Files\algo</Filter>
     </ClInclude>
     <ClInclude Include="src\metaheuristics\SimulatedAnnealing.h">
-      <Filter>Header Files\algo</Filter>
-    </ClInclude>
-    <ClInclude Include="src\moves\TwoOpt.h">
       <Filter>Header Files\algo</Filter>
     </ClInclude>
     <ClInclude Include="src\Solution.h">
@@ -100,6 +121,24 @@
     </ClInclude>
     <ClInclude Include="src\QuadraticFormulation.h">
       <Filter>Header Files\algo</Filter>
+    </ClInclude>
+    <ClInclude Include="src\search\LocalSearch.h">
+      <Filter>Header Files\algo</Filter>
+    </ClInclude>
+    <ClInclude Include="src\neighborhoods\ThreeOpt.h">
+      <Filter>Header Files\algo\neighborhoods</Filter>
+    </ClInclude>
+    <ClInclude Include="src\neighborhoods\TwoOpt.h">
+      <Filter>Header Files\algo\neighborhoods</Filter>
+    </ClInclude>
+    <ClInclude Include="src\neighborhoods\Neighborhood.h">
+      <Filter>Header Files\algo\neighborhoods</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mutations\TwoOptMutation.h">
+      <Filter>Header Files\algo\mutations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\crossovers\CycleCrossover.h">
+      <Filter>Header Files\algo\crossovers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

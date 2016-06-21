@@ -1,7 +1,6 @@
 #ifndef MEMETICALGORITHM_H
 #define MEMETICALGORITHM_H
 
-
 #include "Solution.h"
 
 class MemeticAlgorithm {

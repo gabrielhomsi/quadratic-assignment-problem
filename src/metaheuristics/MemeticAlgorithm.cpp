@@ -1,10 +1,12 @@
+#include "MemeticAlgorithm.h"
+
 #include <iostream>
 #include <algorithm>
-#include <mutations/TwoOptMutation.h>
-#include <search/LocalSearch.h>
-#include "MemeticAlgorithm.h"
+
+#include "mutations/TwoOptMutation.h"
+#include "search/LocalSearch.h"
+#include "crossovers/CycleCrossover.h"
 #include "Random.h"
-#include "CycleCrossover.h"
 
 using namespace std;
 

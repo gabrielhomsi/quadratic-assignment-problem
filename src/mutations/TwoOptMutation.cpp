@@ -1,6 +1,6 @@
-#include <neighborhoods/TwoOpt.h>
-#include <Random.h>
 #include "TwoOptMutation.h"
+
+#include <Random.h>
 
 using namespace std;
 

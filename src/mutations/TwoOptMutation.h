@@ -1,9 +1,8 @@
 #ifndef QAP_TWOOPTMUTATION_H
 #define QAP_TWOOPTMUTATION_H
 
-
-#include <Solution.h>
-#include <TwoOpt.h>
+#include "Solution.h"
+#include "neighborhoods/TwoOpt.h"
 
 class TwoOptMutation {
 public:

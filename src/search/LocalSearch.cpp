@@ -1,5 +1,6 @@
-#include <iostream>
 #include "LocalSearch.h"
+
+#include <iostream>
 
 using namespace std;
 
