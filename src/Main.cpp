@@ -1,13 +1,17 @@
 #include <iostream>
 #include <chrono>
+#include "search/LocalSearch.h"
 #include "metaheuristics/MemeticAlgorithm.h"
 #include "metaheuristics/SimulatedAnnealing.h"
 #include "QuadraticFormulation.h"
+#include "Random.h"
 
 using namespace std;
 using namespace std::chrono;
 
 int main(int argc, char **argv) {
+    srand(time(NULL));
+
     Parameters &parameters = Parameters::getInstance();
     parameters.load(argc, argv);
 
@@ -38,6 +42,17 @@ int main(int argc, char **argv) {
         QuadraticFormulation qp;
 
         qp.run();
+    } else if (parameters.vm.count("ls")) {
+        LocalSearch ls;
+
+        Solution best = Solution::random();
+
+        ls.run(best);
+
+        cout << "Permutation: " << endl;
+        best.display();
+
+        cout << best.cost << ", ";
     }
 
     high_resolution_clock::time_point t2 = high_resolution_clock::now();

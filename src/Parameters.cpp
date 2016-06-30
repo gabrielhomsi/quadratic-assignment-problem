@@ -23,6 +23,8 @@ void Parameters::load(int argc, char **argv) {
 
             ("qp", "Quadratic Programming Formulation")
 
+            ("ls", "Local Search")
+
             ("assertions", "Turn assertions on")
             ("silent", "Silent mode");
 
