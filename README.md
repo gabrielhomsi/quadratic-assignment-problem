@@ -1,1 +1,3 @@
-# A Memetic Algorithm for the Quadratic Assignment Problem
+# Quadratic Assignment Problem
+
+A C++ memetic algorithm for the Quadratic Assignment Problem
